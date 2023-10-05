@@ -39,6 +39,7 @@ const Login = () => {
             }
           })
           .then((data) => {
+            localStorage.setItem('login',data.idToken)
             console.log(data.idToken);
             alert("login Successful")
           })

@@ -1,0 +1,41 @@
+.head{
+    border: solid;
+    border-width: 0.8px;
+    display: flex;
+    justify-content: center;
+    gap:50px;
+    list-style:None;
+    background-color: rgba(104, 217, 219, 0.413);
+}
+
+.btn{
+    text-decoration: none;
+    
+}
+.head1 :hover{
+    
+    color:white;
+    font-weight: bold;
+    background-color:  #587ec0;
+}
+
+
+.head1 :active{
+    color: rgba(104, 217, 219, 0.413);
+    background-color: #587ec0;
+}
+
+
+.head1 :hover{
+    
+    color:white;
+    font-weight: bold;
+    background-color:  #587ec0;
+}
+.btn{
+    background-color: rgba(104, 217, 219, 0.413);
+    color: black;
+    border:solid;
+    
+    border-color: rgba(104, 217, 219, 0.413) ;
+}
