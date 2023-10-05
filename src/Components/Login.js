@@ -21,7 +21,7 @@ const Login = () => {
             body: JSON.stringify({
               email: details.email,
               password: details.password,
-              returnSecureToken: true,
+              returnSecureToken:true,
             }),
             headers: {
               "Content-Type": "application/json",
