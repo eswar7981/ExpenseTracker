@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import "./Login.css";
-
+import {useHistory} from 'react-router-dom'
 const Login = () => {
+
+  const history=useHistory()
+
   const [details, setDetails] = useState({
     email: "",
     password: "",
@@ -12,75 +15,71 @@ const Login = () => {
   const dataHandler = (e) => {
     e.preventDefault();
 
-
     if (!login) {
-        fetch(
-          "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAjGnWVeAziSlwIlc4VUJwIEJBZoibh8LE",
-          {
-            method: "POST",
-            body: JSON.stringify({
-              email: details.email,
-              password: details.password,
-              returnSecureToken:true,
-            }),
-            headers: {
-              "Content-Type": "application/json",
-            },
+      fetch(
+        "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAjGnWVeAziSlwIlc4VUJwIEJBZoibh8LE",
+        {
+          method: "POST",
+          body: JSON.stringify({
+            email: details.email,
+            password: details.password,
+            returnSecureToken: true,
+          }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+        .then((res) => {
+          if (res.ok) {
+            return res.json();
+          } else {
+            return res.json().then((data) => {
+              let err = "login failed";
+              alert(err);
+            });
           }
-        )
-          .then((res) => {
-            if (res.ok) {
-              return res.json();
-            } else {
-              return res.json().then((data) => {
-                let err = "login failed";
-                alert(err);
-              });
+        })
+        .then((data) => {
+          localStorage.setItem("login", data.idToken);
+          console.log(data.idToken);
+          alert("login Successful");
+          history.replace('/profile')
+        })
+        .catch((err) => {
+          alert("Authentication failed");
+        });
+      setDetails({ email: "", password: "", confirmPassword: "" });
+    } else {
+      if (details.password === details.confirmPassword) {
+        if (login) {
+          fetch(
+            "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAjGnWVeAziSlwIlc4VUJwIEJBZoibh8LE",
+            {
+              method: "POST",
+              body: JSON.stringify({
+                email: details.email,
+                password: details.password,
+                returnSecureToken: true,
+              }),
+              headers: {
+                "Content-Type": "application/json",
+              },
             }
-          })
-          .then((data) => {
-            localStorage.setItem('login',data.idToken)
-            console.log(data.idToken);
-            alert("login Successful")
-          })
-          .catch((err) => {
-            alert("Authentication failed");
+          ).then((res) => {
+            if (res.ok) {
+              alert("signup successful");
+            } else {
+              res.json().then((data) => console.log(data));
+            }
           });
           setDetails({ email: "", password: "", confirmPassword: "" });
-        
-
+          setLogin(true);
+        }
+      } else {
+        alert("password is not same in both fields");
       }
-
-    else{
-    if (details.password === details.confirmPassword) {
-      if (login) {
-        fetch(
-          "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAjGnWVeAziSlwIlc4VUJwIEJBZoibh8LE",
-          {
-            method: "POST",
-            body: JSON.stringify({
-              email: details.email,
-              password: details.password,
-              returnSecureToken: true,
-            }),
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        ).then((res) => {
-          if (res.ok) {
-            alert("signup successful");
-          } else {
-            res.json().then((data) => console.log(data));
-          }
-        });
-        setDetails({ email: "", password: "", confirmPassword: "" });
-        setLogin(true);
-      }
-     
-    } else {
-      alert("password is not same in both fields");
-    }}
+    }
   };
 
   const emailHandler = (e) => {
@@ -112,29 +111,31 @@ const Login = () => {
               required
             ></input>
           </div>
-         {!login ? <div className="field2">
-            <label>Password</label>
-            <input
-              type="password"
-              value={details.password}
-              onChange={passwordHandler}
-              required
-            ></input>
-          </div> :<div className="field2">
-            <label>Password</label>
-            <input
-             
-              value={details.password}
-              onChange={passwordHandler}
-              required
-            ></input>
-          </div> 
-}
+          {!login ? (
+            <div className="field2">
+              <label>Password</label>
+              <input
+                type="password"
+                value={details.password}
+                onChange={passwordHandler}
+                required
+              ></input>
+            </div>
+          ) : (
+            <div className="field2">
+              <label>Password</label>
+              <input
+                value={details.password}
+                onChange={passwordHandler}
+                required
+              ></input>
+            </div>
+          )}
           {login && (
             <div className="field3">
               <label>Confirm Password</label>
               <input
-                 type="password"
+                type="password"
                 value={details.confirmPassword}
                 onChange={confirmHandler}
                 required

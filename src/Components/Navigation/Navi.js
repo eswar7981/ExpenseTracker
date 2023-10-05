@@ -25,14 +25,21 @@ const Navi = () => {
                         </NavLink>
                     </li>
                     {localStorage.getItem('login')
-                    &&
+                    && <>
                     <li className='head1'>
                         <NavLink to="/verifyemail">
                             < div className='btn'>
                             Verify Email
                             </div>
                         </NavLink>
-                    </li>
+                    </li> 
+                    <li className='head1'>
+                        <NavLink to="/logout">
+                            < div className='btn'>
+                                LogOut
+                            </div>
+                        </NavLink>
+                    </li></>
 }
                 </div>
             </ul>
