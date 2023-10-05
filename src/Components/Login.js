@@ -95,12 +95,22 @@ const Login = () => {
   const confirmHandler = (e) => {
     e.preventDefault();
     setDetails({ ...details, ["confirmPassword"]: e.target.value });
-  };
+};
+
+  const passwordChangeHandler=(e)=>{
+    e.preventDefault()
+    history.replace('/forgotpassword')
+  }
 
   return (
     <div className="box">
       <div className="titled">{login ? <h1>Signup</h1> : <h1>Login</h1>}</div>
       <form onSubmit={dataHandler}>
+        <div className="forgot">
+            <button onClick={passwordChangeHandler}>
+                Forgot Password
+            </button>
+        </div>
         <div className="form">
           <div className="field1">
             <label>Email</label>

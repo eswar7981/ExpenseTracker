@@ -5,15 +5,15 @@
     border-radius: 6px;
     margin-left: 350px;
     margin-right: 400px;
-    margin-top:150px;
+    margin-top:50px;
     padding-bottom: 30px;
-    background-color: rgb(137, 187, 252);
+    background-color: #89bbfc;
 }
 
 
 .titled{
     margin-left: 160px;
-    margin-bottom: 50px;
+    margin-bottom: 10px;
 }
 
 .titled h1{
@@ -35,6 +35,8 @@
     background-color: rgb(17, 79, 159);
 
 }
+
+
 
 
 .form{
@@ -95,6 +97,23 @@
     border-width: 0.3px;
     border-radius: 5px;
     background-color: rgb(170, 243, 218);
+}
+
+
+.forgot{
+    margin-left: 130px;
+    margin-bottom: 30px;
+}
+
+.forgot button{
+    font-size:large;
+    font-weight: 700;
+    background-color: #89bbfc;
+    border:solid;
+    border-color:rgb(17, 79, 159);
+    border-width:0.4px;
+    border-radius: 5px;
+
 }
 
 

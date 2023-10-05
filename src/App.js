@@ -7,6 +7,7 @@ import { Route,RouterProvider,Switch } from 'react-router-dom';
 import Navi from './Components/Navigation/Navi';
 import VerifyEmail from './Components/VerifyEmail';
 import LogOut from './Components/LogOut';
+import ForgotPassword from './Components/ForgotPassword';
 
 function App() {
   return (
@@ -30,6 +31,9 @@ function App() {
   </Route>
   <Route path="/logout">
     <LogOut></LogOut>
+  </Route>
+  <Route path='/forgotpassword'>
+    <ForgotPassword></ForgotPassword>
   </Route>
   </>
   </Switch>
