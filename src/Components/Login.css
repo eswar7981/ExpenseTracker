@@ -1,0 +1,100 @@
+.box{
+    display:grid;
+    justify-content: center;
+    border:solid;
+    border-radius: 6px;
+    margin-left: 350px;
+    margin-right: 400px;
+    margin-top:150px;
+    padding-bottom: 30px;
+    background-color: rgb(137, 187, 252);
+}
+
+
+.titled{
+    margin-left: 160px;
+    margin-bottom: 50px;
+}
+
+.titled h1{
+    font-size: x-large;
+}
+
+
+.but{
+    margin-top: 20px;
+    margin-left: 320px;
+}
+
+.but button{
+    border: solid;
+    width:90px;
+    height:28px;
+    border-radius:6px;
+    border-width: 0.4px;
+    background-color: rgb(17, 79, 159);
+
+}
+
+
+.form{
+    display: grid;
+    gap:30px
+}
+
+.field1 label{
+    font-size: large;
+    font-weight: 500;
+}
+
+.field1 input{
+    margin-left: 203px;
+    border:solid;
+    border-radius: 2px;
+    height: 18px;
+}
+
+
+.field2 label{
+    font-size: large;
+    font-weight: 500;
+}
+
+.field2 input{
+    margin-left: 170px;
+    border:solid;
+    border-radius: 2px;
+    height: 18px;
+}
+
+
+
+.field3 label{
+    font-size: large;
+    font-weight: 500;
+}
+
+.field3 input{
+    margin-left: 100px;
+    border:solid;
+    border-radius: 2px;
+    height: 18px;
+}
+
+
+.changemode{
+    
+    margin-top: 30px;
+
+}
+
+.changemode button{
+    width:400px;
+    height: 40px;
+    border:solid;
+    border-width: 0.3px;
+    border-radius: 5px;
+    background-color: rgb(170, 243, 218);
+}
+
+
