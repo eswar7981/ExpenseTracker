@@ -24,6 +24,16 @@ const Navi = () => {
                             </div>
                         </NavLink>
                     </li>
+                    {localStorage.getItem('login')
+                    &&
+                    <li className='head1'>
+                        <NavLink to="/verifyemail">
+                            < div className='btn'>
+                            Verify Email
+                            </div>
+                        </NavLink>
+                    </li>
+}
                 </div>
             </ul>
         </nav>

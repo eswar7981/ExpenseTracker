@@ -5,6 +5,7 @@ import Interface from './Components/Interface';
 import Profile from './Components/Profile';
 import { Route,RouterProvider,Switch } from 'react-router-dom';
 import Navi from './Components/Navigation/Navi';
+import VerifyEmail from './Components/VerifyEmail';
 
 function App() {
   return (
@@ -22,6 +23,9 @@ function App() {
   </Route>
   <Route path="/profile">
     <Profile></Profile>
+  </Route>
+  <Route path="/verifyemail">
+    <VerifyEmail></VerifyEmail>
   </Route>
   </>
   </Switch>
