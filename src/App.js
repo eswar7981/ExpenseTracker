@@ -8,6 +8,7 @@ import Navi from './Components/Navigation/Navi';
 import VerifyEmail from './Components/VerifyEmail';
 import LogOut from './Components/LogOut';
 import ForgotPassword from './Components/ForgotPassword';
+import AddExpense from './Components/AddExpense';
 
 function App() {
   return (
@@ -34,6 +35,9 @@ function App() {
   </Route>
   <Route path='/forgotpassword'>
     <ForgotPassword></ForgotPassword>
+  </Route>
+  <Route path='/addexpense'>
+    <AddExpense></AddExpense>
   </Route>
   </>
   </Switch>

@@ -1,0 +1,37 @@
+.field4{
+    margin-top: 10px;
+}
+
+.field4 label{
+    font-size: large;
+    font-weight: 500;
+}
+
+.field4 input{
+    margin-left: 125px;
+    border:solid;
+    border-radius: 2px;
+    height: 18px;
+}
+
+
+.field5{
+    margin-top: 10px;
+}
+
+.field5 label{
+    font-size: large;
+    font-weight: 500;
+}
+
+.field5 select{
+    margin-left: 144px;
+    border:solid;
+    border-radius: 2px;
+    height: 25px;
+    width: 180px;
+}
+
+.form1{
+    display: flex;
+}
