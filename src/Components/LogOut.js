@@ -15,7 +15,7 @@ const LogOut = () => {
   return (
     <div>
    <div className='box'>
-    <div className='titled'>
+    <div className='titled1'>
         <h1>Are You Sure?</h1>
     </div>
     <div>

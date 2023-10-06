@@ -35,3 +35,73 @@
 .form1{
     display: flex;
 }
+
+
+.btns{
+    display: flex;
+}
+
+.expense{
+    display: flex;
+}
+
+.for{
+    list-style: decimal;
+    margin-top: 10px;
+    display: flex;
+    border: solid;
+    background-color: #7593bb;
+    border-width: 0.7px;
+    border-radius: 5px;
+}
+
+.for {
+    gap:30px;
+    padding-left: 20px;
+}
+
+
+.for label{
+    font-size: large;
+}
+
+.box1{
+    
+        display:grid;
+        justify-content: center;
+        border:solid;
+        border-radius: 6px;
+        margin-left: 250px;
+        margin-right: 250px;
+        margin-top:50px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        background-color: #89bbfc;
+    
+}
+
+.edit button{
+    color: rgb(255, 255, 255);
+    border: solid;
+    width:50px;
+    height:20px;
+ 
+    border-width: 0.4px;
+    background-color:rgb(22, 22, 173);
+}
+.edit{
+    margin-right: 20px;
+}
+
+.del button{
+    color: rgb(255, 255, 255);
+    border: solid;
+    width:50px;
+    height:20px;
+ 
+    border-width: 0.4px;
+    background-color:rgb(221, 38, 38);
+}
+.del{
+    margin-right: 20px;
+}
