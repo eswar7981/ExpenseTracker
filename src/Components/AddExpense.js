@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import './AddExpense.css'
+import axios from 'axios'
+
+
 const AddExpense = () => {
     const [expenses,setExpenses]=useState([])
 
@@ -18,12 +21,28 @@ const AddExpense = () => {
     setExpenseDetails({...expenseDetails,['category']:e.target.value})
    }
 
-  const submitHandler=(e)=>{
+  async function submitHandler(e){
     e.preventDefault()
-    setExpenses([...expenses,expenseDetails])
-    setExpenseDetails({amount:null,description:'',category:''})
+    try{
+    const response= await fetch('https://expense-tracker-241ff-default-rtdb.firebaseio.com/expenses.json',
+    {
+      method:'POST',
+      body:JSON.stringify({
+        amount:expenseDetails.amount,
+        description:expenseDetails.description,
+        category:expenseDetails.category
+      }),
+      headers:{
+        "Content-type":"application/json",
+      }
+    })
+  
+    const data= await response.json()
+    console.log(data)
+  }catch(err){
+    alert(err)
   }
-
+    }
 
   return (
     <div>
