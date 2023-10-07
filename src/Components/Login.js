@@ -46,7 +46,7 @@ const Login = () => {
           dispatch(authActions.setUserId(data.idToken))
           dispatch(authActions.isLogin())
           alert("login Successful");
-          history.replace("/profile");
+          history.replace("/addexpense");
         })
         .catch((err) => {
           alert("Authentication failed");

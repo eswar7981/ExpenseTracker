@@ -110,14 +110,15 @@
 .Premium button{
     color: rgb(255, 255, 255);
     border: solid;
-    width:80px;
-    height:20px;
+    width:160px;
+    height:30px;
  
     border-width: 0.4px;
     background-color:rgb(234, 172, 15);
 }
 .Premium{
-    margin-right: 20px;
+    margin-left: 20px;
+    margin-bottom: 20px;
 }
 
 
@@ -125,4 +126,24 @@
     font-weight: 600;
     font-size: larger;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+
+.flex{
+    display: flex;
+
+}
+
+.download {
+    margin-left: 90px;
+}
+
+.download button{
+    color: rgb(255, 255, 255);
+    border: solid;
+    width:160px;
+    height:30px;
+ 
+    border-width: 0.4px;
+    background-color:rgb(89, 89, 174);
 }

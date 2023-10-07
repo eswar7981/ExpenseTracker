@@ -3,10 +3,12 @@ import "./AddExpense.css";
 import axios from "axios";
 import { expensesActions } from "../Redux/ExpensesReducer";
 import { useDispatch, useSelector } from "react-redux";
-
+import { themeActions } from "../Redux/ThemeReducer";
 const AddExpense = () => {
   const dispatch = useDispatch();
   const expens = useSelector((state) => state.expens.expenses);
+  const theme = useSelector((state) => state.theme.theme);
+  const checkTotal = useSelector((state) => state.expens.totalExpenses);
   const [change, setChange] = useState("asa");
   const [expenses, setExpenses] = useState([]);
   const [expenseDetails, setExpenseDetails] = useState({
@@ -14,7 +16,12 @@ const AddExpense = () => {
     description: "",
     category: "",
   });
-  console.log(change);
+
+  const themeHandler = (e) => {
+    e.preventDefault();
+    dispatch(themeActions.isDark());
+  };
+
   const amountHandler = (e) => {
     setExpenseDetails({ ...expenseDetails, ["amount"]: e.target.value });
   };
@@ -59,7 +66,7 @@ const AddExpense = () => {
       }
     }
     Data();
-  },[]);
+  }, []);
 
   async function submitHandler(e) {
     e.preventDefault();
@@ -185,7 +192,19 @@ const AddExpense = () => {
             <div className="but">
               <button>Add</button>
             </div>
+
+           
           </form>
+          {checkTotal > 10000 && (
+              <div className="flex">
+                <div className="Premium">
+                  <button onClick={themeHandler}>Activate Premium</button>
+                </div>
+                <div className="download">
+                  <button>Download</button>
+                </div>
+              </div>
+            )}
         </div>
       </div>
 
@@ -209,11 +228,6 @@ const AddExpense = () => {
                         Delete
                       </button>
                     </div>
-                    {item.amount>10000 &&
-                      <div className="Premium">
-                        <button>Premium</button>
-                      </div>
-                    }
                   </li>
                 </div>
               </div>

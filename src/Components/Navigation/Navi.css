@@ -25,6 +25,14 @@
     background-color: #587ec0;
 }
 
+.dark{
+    background-color:black;
+}
+
+.white{
+    background-color: white;
+}
+
 
 .head1 :hover{
     

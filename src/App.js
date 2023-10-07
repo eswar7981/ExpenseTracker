@@ -9,9 +9,13 @@ import VerifyEmail from './Components/VerifyEmail';
 import LogOut from './Components/LogOut';
 import ForgotPassword from './Components/ForgotPassword';
 import AddExpense from './Components/AddExpense';
-
+import { themeActions } from './Redux/ThemeReducer';
+import { useSelector } from 'react-redux';
+import './App.css'
 function App() {
+  const theme=useSelector((state)=>state.theme.theme)
   return (
+    <div  className={theme==='dark'?'dark':'light'}>
     <>
     <header>
       <Navi></Navi>
@@ -42,6 +46,7 @@ function App() {
   </>
   </Switch>
   </>
+  </div>
   );
 }
 

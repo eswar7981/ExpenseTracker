@@ -1,24 +1,18 @@
-import { createSlice } from "@reduxjs/toolkit"
+import { createSlice } from "@reduxjs/toolkit";
 
+const initialExpensesState = { expenses: [], totalExpenses: 0 };
 
-const initialExpensesState={expenses:[]}
+const ExpensesSlice = createSlice({
+  name: "Expenses",
+  initialState: initialExpensesState,
+  reducers: {
+    storeExpenses(state, action) {
+      state.expenses = [...state.expenses, action.payload];
+      action.payload.map((item)=>(state.totalExpenses=state.totalExpenses+parseInt(item.amount)))
+    },
+  },
+});
 
-const ExpensesSlice=createSlice({
-    name:'Expenses',
-    initialState:initialExpensesState,
-    reducers:{
-        storeExpenses(state,action){
-            state.expenses=[
-                ...state.expenses,
-                action.payload
-            ]
-            
-        }
+export const expensesActions = ExpensesSlice.actions;
 
-    }
-})
-
-
-export const expensesActions=ExpensesSlice.actions
-
-export default ExpensesSlice.reducer
+export default ExpensesSlice.reducer;
