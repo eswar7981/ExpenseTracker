@@ -1,15 +1,20 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import "./Navi.css";
-
+import {useSelector} from 'react-redux'
 const Navi = () => {
+  const auth=useSelector(state=>state.auth.login)
+
+  
+ 
   return (
     <div>
       <header>
         <nav>
           <ul>
             <div className="head">
-              {localStorage.getItem("login") && (
+              
+              {auth && (
                 <>
                   <li className="head1">
                     <NavLink to="/addexpense">
@@ -34,7 +39,7 @@ const Navi = () => {
                 </NavLink>
               </li>
               
-             {!localStorage.getItem('login') && <li className="head1">
+             {!auth && <li className="head1">
                 <NavLink to="/login">
                   <div className="btn" style={{ textDecoration: "none" }}>
                     Login

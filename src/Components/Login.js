@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import "./Login.css";
-import {useHistory} from 'react-router-dom'
+import { useHistory } from "react-router-dom";
+import {useSelector,useDispatch} from 'react-redux'
+import {authActions} from '../Redux/AuthStore'
 const Login = () => {
-
-  const history=useHistory()
+   const dispatch=useDispatch()
+  const history = useHistory();
 
   const [details, setDetails] = useState({
     email: "",
@@ -41,10 +43,10 @@ const Login = () => {
           }
         })
         .then((data) => {
-          localStorage.setItem("login", data.idToken);
-          console.log(data.idToken);
+          dispatch(authActions.setUserId(data.idToken))
+          dispatch(authActions.isLogin())
           alert("login Successful");
-          history.replace('/profile')
+          history.replace("/profile");
         })
         .catch((err) => {
           alert("Authentication failed");
@@ -95,21 +97,19 @@ const Login = () => {
   const confirmHandler = (e) => {
     e.preventDefault();
     setDetails({ ...details, ["confirmPassword"]: e.target.value });
-};
+  };
 
-  const passwordChangeHandler=(e)=>{
-    e.preventDefault()
-    history.replace('/forgotpassword')
-  }
+  const passwordChangeHandler = (e) => {
+    e.preventDefault();
+    history.replace("/forgotpassword");
+  };
 
   return (
     <div className="box">
       <div className="titled">{login ? <h1>Signup</h1> : <h1>Login</h1>}</div>
       <form onSubmit={dataHandler}>
         <div className="forgot">
-            <button onClick={passwordChangeHandler}>
-                Forgot Password
-            </button>
+          <button onClick={passwordChangeHandler}>Forgot Password</button>
         </div>
         <div className="form">
           <div className="field1">

@@ -1,16 +1,20 @@
 import React, { useEffect, useState } from "react";
 import "./AddExpense.css";
 import axios from "axios";
+import { expensesActions } from "../Redux/ExpensesReducer";
+import { useDispatch, useSelector } from "react-redux";
 
 const AddExpense = () => {
+  const dispatch = useDispatch();
+  const expens = useSelector((state) => state.expens.expenses);
+  const [change, setChange] = useState("asa");
   const [expenses, setExpenses] = useState([]);
-  const [data, setData] = useState([]);
   const [expenseDetails, setExpenseDetails] = useState({
     amount: null,
     description: "",
     category: "",
   });
-
+  console.log(change);
   const amountHandler = (e) => {
     setExpenseDetails({ ...expenseDetails, ["amount"]: e.target.value });
   };
@@ -24,6 +28,7 @@ const AddExpense = () => {
   };
 
   useEffect(() => {
+    console.log("hi");
     async function Data() {
       try {
         const response = await fetch(
@@ -48,14 +53,13 @@ const AddExpense = () => {
             };
           });
         }
-        setData(itemsArray);
+        dispatch(expensesActions.storeExpenses(itemsArray));
       } catch (err) {
         alert(err);
       }
     }
-
     Data();
-  }, [data]);
+  },[]);
 
   async function submitHandler(e) {
     e.preventDefault();
@@ -84,6 +88,7 @@ const AddExpense = () => {
       description: "",
       category: "",
     });
+    setChange("sasa");
   }
 
   async function deleteHandler(e, id) {
@@ -185,32 +190,35 @@ const AddExpense = () => {
       </div>
 
       <div className="box1">
-        {data.map((item) => (
-          <>
-         
-            <div className="expense">
-            
-              <div >
-                <li className="for">
-               
-                <label>{item.amount}</label>
-                <label>{item.description}</label>
-                <label>{item.category}</label>
-                <div className="edit">
-                  <button onClick={(e) => editHandler(e, item.id)}>Edit</button>
+        {expens.length !== 0 &&
+          expens[0].map((item) => (
+            <>
+              <div className="expense">
+                <div>
+                  <li className="for">
+                    <label>{item.amount}</label>
+                    <label>{item.description}</label>
+                    <label>{item.category}</label>
+                    <div className="edit">
+                      <button onClick={(e) => editHandler(e, item.id)}>
+                        Edit
+                      </button>
+                    </div>
+                    <div className="del">
+                      <button onClick={(e) => deleteHandler(e, item.id)}>
+                        Delete
+                      </button>
+                    </div>
+                    {item.amount>10000 &&
+                      <div className="Premium">
+                        <button>Premium</button>
+                      </div>
+                    }
+                  </li>
                 </div>
-                <div className="del">
-                  <button onClick={(e) => deleteHandler(e, item.id)}>
-                    Delete
-                  </button>
-                </div>
-                </li>
               </div>
-              
-            </div>
-            
-          </>
-        ))}
+            </>
+          ))}
       </div>
     </div>
   );

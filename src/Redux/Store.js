@@ -1,18 +1,11 @@
-const redux = require("redux");
-
-const counterReducer = (state={counter:0}, action) => {
-  return {
-    counter: state.counter + 1,
-  };
-};
-
-const store = redux.createStore(counterReducer);
+import { configureStore } from "@reduxjs/toolkit";
+import authReducer from "./AuthStore";
+import expensesReducer from "./ExpensesReducer"
 
 
-const counterSubsriber=()=>{
-    const latestState=store.getState()
-    console.log(latestState)
+const store=configureStore({
+    reducer:{auth:authReducer,expens:expensesReducer}
+})
 
-}
 
-store.subscribe(counterSubsriber)
+export default store;
